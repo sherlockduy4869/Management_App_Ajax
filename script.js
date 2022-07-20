@@ -7,7 +7,19 @@ $(document).ready(function(){
         var note = $('#note').val();
 
         $.ajax({
-
+            url: "ajax_action.php",
+            method: "POST",
+            data:{
+                full_name:full_name, 
+                phone_number:phone_number,
+                address:address,
+                email:email,
+                note:note
+            },
+            success:function(data){
+                alert("successed");
+                $('#insert_data')[0].reset();
+            }
         });
 
     });
