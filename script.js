@@ -13,6 +13,22 @@ $(document).ready(function(){
 
     fetch_data();
 
+    //delete data
+    $(document).on('click','.del_data', function(){
+        var id_del = $(this).data("id_del");
+        $.ajax({
+            url: "ajax_action.php",
+            method: "POST",
+            data:{
+                id_del:id_del, 
+            },
+            success:function(data){
+                alert("delete successful");
+                fetch_data();
+            }
+        });
+    });
+
     //edit data
     function edit_data(id, text, column_name){
         $.ajax({

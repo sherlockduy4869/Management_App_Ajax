@@ -14,6 +14,13 @@
 
     }
 
+    //delete data
+    if(isset($_POST['id_del'])){
+        $id_del = $_POST['id_del'];
+
+        $result = mysqli_query($con,"DELETE FROM tbl_customer WHERE customer_id = '$id_del' ");
+    }
+
     //Edit data
     if(isset($_POST['id'])){
         $id = $_POST['id'];
@@ -39,6 +46,7 @@
                     <td>Address</td>
                     <td>Email</td>
                     <td>Note</td>
+                    <td>Customize</td>
                 </tr>
             </thead>
     ';
@@ -54,6 +62,7 @@
                     <td contenteditable>'.$rows['customer_address'].'</td>
                     <td contenteditable>'.$rows['customer_email'].'</td>
                     <td contenteditable>'.$rows['note'].'</td>
+                    <td><button data-id_del = '.$rows['customer_id'].' class = "btn btn-sm btn-danger del_data" name="delete_data">X</button></td>
                 </tr>
             </tbody>
         
