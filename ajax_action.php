@@ -1,6 +1,20 @@
 <?php
     include_once("db.php");
 
+    //select data
+    if(isset($_POST['id_nation'])){
+        $id_nation = $_POST['id_nation'];
+        $sql_capital = mysqli_query($con,"SELECT * FROM tbl_capital WHERE id_nation = '$id_nation'");
+        $outPut = '';
+        $outPut = '<option>---Choose Capital---</option>';
+        if(mysqli_num_rows($sql_capital)>0){
+            while($row_capital = mysqli_fetch_array($sql_capital)){
+                $outPut .=  '<option value = "'.$row_capital['id_capital'].'">'.$row_capital['capital_name'].'</option>';
+            }
+        }
+        echo $outPut;
+    }
+
     //inset data
     if(isset($_POST['full_name'])){
         $full_name = $_POST['full_name'];

@@ -1,5 +1,19 @@
 $(document).ready(function(){
 
+    $('#nation').change(function(){
+        var id_nation = $(this).val();
+        $.ajax({
+            url: "ajax_action.php",
+            method: "POST",
+            data:{
+                id_nation:id_nation, 
+            },
+            success:function(data){
+                $('#capital').html(data);
+            }
+        });
+    });
+
     function fetch_data(){
         $.ajax({
             url: "ajax_action.php",

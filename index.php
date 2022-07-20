@@ -1,3 +1,8 @@
+<?php
+    include_once('db.php');
+    $sql_nation = mysqli_query($con,"SELECT * FROM tbl_nation ORDER BY id_nation");
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -34,7 +39,23 @@
             </form>
             <h3>Load Data By Ajax</h3>
             <div id="load_data">
-                
+            </div>
+
+            <div>
+                <h3>Select Data Using Ajax</h3>
+                <label for="">Nation</label>
+                <select class="form-control" id="nation" name="nation">
+                    <option value="">---Choose Nation---</option>
+                    <?php
+                        while($row_nation = mysqli_fetch_array($sql_nation)){
+                            echo '<option value="'.$row_nation['id_nation'].'">'.$row_nation['nation_name'].'</option>';
+                        }
+                    ?>
+                </select>
+                <label for="">Capital</label>
+                <select class="form-control" id="capital" name="capital">
+
+                </select>
             </div>
         </div>
     </div>
