@@ -14,8 +14,18 @@
 
     }
 
-    //get data
+    //Edit data
+    if(isset($_POST['id'])){
+        $id = $_POST['id'];
+        $text = $_POST['text'];
+        $column_name = $_POST['column_name'];
 
+        $result = mysqli_query($con,"UPDATE tbl_customer SET $column_name = '$text' WHERE customer_id = '$id' ");
+
+    }
+
+
+    //Get data
     $outPut = '';
     $sql_select =  mysqli_query($con,'SELECT * FROM tbl_customer ORDER BY customer_id DESC');
     $outPut.='
@@ -39,11 +49,11 @@
             $outPut .= '
             <tbody>
                 <tr>
-                    <td>'.$rows['customer_full_name'].'</td>
-                    <td>'.$rows['customer_phone'].'</td>
-                    <td>'.$rows['customer_address'].'</td>
-                    <td>'.$rows['customer_email'].'</td>
-                    <td>'.$rows['note'].'</td>
+                    <td class = "full_name" data-id1 = '.$rows['customer_id'].' contenteditable>'.$rows['customer_full_name'].'</td>
+                    <td contenteditable>'.$rows['customer_phone'].'</td>
+                    <td contenteditable>'.$rows['customer_address'].'</td>
+                    <td contenteditable>'.$rows['customer_email'].'</td>
+                    <td contenteditable>'.$rows['note'].'</td>
                 </tr>
             </tbody>
         

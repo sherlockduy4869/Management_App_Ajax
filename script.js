@@ -6,12 +6,35 @@ $(document).ready(function(){
             method: "POST",
             success:function(data){
                 $('#load_data').html(data);
-                fetch_data();
+                //fetch_data();
             }
         });
     }
 
     fetch_data();
+
+    //edit data
+    function edit_data(id, text, column_name){
+        $.ajax({
+            url: "ajax_action.php",
+            method: "POST",
+            data:{
+                id:id, 
+                text:text,
+                column_name:column_name
+            },
+            success:function(data){
+                alert("Edited successful");
+                fetch_data();    
+            }
+        });
+    }
+
+    $(document).on('blur','.full_name', function(){
+        var id = $(this).data("id1");
+        var text = $(this).text();
+        edit_data(id,text,"customer_full_name");
+    });
 
     //insert data
     $('#button_insert').on('click', function(){
