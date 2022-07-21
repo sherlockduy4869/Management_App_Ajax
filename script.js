@@ -1,5 +1,21 @@
 $(document).ready(function(){
 
+    $('#submit_from').on('submit', function(e){
+        e.preventDefault();
+        $.ajax({
+            url: "ajax_action.php",
+            method: "POST",
+            data:new FormData(this),
+            contentType:false,
+            processData:false,
+            success:function(data){
+                $('#img_preview').html(data);
+                $('#image_file').val('');
+            }
+        });
+    });
+
+    //choose nation
     $('#nation').change(function(){
         var id_nation = $(this).val();
         $.ajax({
