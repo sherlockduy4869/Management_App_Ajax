@@ -30,7 +30,7 @@
     //delete image
     if(!empty($_POST['path'])){
         if(unlink($_POST['path'])){
-            echo '<script> alert("Image file is deleted");</script>';
+            echo '';
         }
     }
 

@@ -26,6 +26,7 @@ $(document).ready(function(){
                 data:{path:path},
                 success:function(data){
                     $('#img_preview').html('');
+                    alert("Image file is deleted");
                 }
             });
         }
