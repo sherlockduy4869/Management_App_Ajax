@@ -27,6 +27,13 @@
         echo '<script> alert("Please choose image") </script>';
     }
 
+    //delete image
+    if(!empty($_POST['path'])){
+        if(unlink($_POST['path'])){
+            echo '<script> alert("Image file is deleted");</script>';
+        }
+    }
+
     // //select data
     // if(isset($_POST['id_nation'])){
     //     $id_nation = $_POST['id_nation'];

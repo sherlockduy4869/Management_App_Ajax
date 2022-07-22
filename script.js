@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+    //upload image
     $('#submit_from').on('submit', function(e){
         e.preventDefault();
         $.ajax({
@@ -13,6 +14,24 @@ $(document).ready(function(){
                 $('#image_file').val('');
             }
         });
+    });
+
+    //delete image
+    $(document).on('click','#remove_btn', function(){
+        if(confirm("Do you want to delete this image?")){
+            var path = $('#remove_btn').data("path");
+            $.ajax({
+                url: "ajax_action.php",
+                method: "POST",
+                data:{path:path},
+                success:function(data){
+                    $('#img_preview').html('');
+                }
+            });
+        }
+        else{
+            return false;
+        }
     });
 
     //choose nation
@@ -107,4 +126,6 @@ $(document).ready(function(){
             }
         });
     });
+
+    
 })
